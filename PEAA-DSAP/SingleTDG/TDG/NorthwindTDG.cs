@@ -145,5 +145,54 @@ namespace SingleTDG.TDG
             return categoryDto;
         }
         #endregion
+
+        #region FindOrderRelativeInfo
+        private const string cmdFindOrderRelativeInfo =
+            "SELECT [Order Details].OrderID, [Products].ProductName, [Order Details].Quantity, [Categories].CategoryID, [Categories].CategoryName, [Order Details].Discount " +
+            "FROM [Order Details], [Products], [Categories] " +
+            "WHERE [Order Details].ProductID = [Products].ProductID AND [Products].CategoryID = [Categories].CategoryID " +
+            "AND [Order Details].OrderID = @OrderID";
+
+        public static IEnumerable<OrderRelativeInfoDto> FindOrderRelativeInfoByOrderId(int orderId)
+        {
+            using (IDbConnection connection = providerFactory.CreateConnection())
+            {
+                connection.ConnectionString = DbSettings.ConnectionString;
+                connection.Open();
+
+                IDbCommand command = providerFactory.CreateCommand();
+                command.Connection = connection;
+                command.CommandText = cmdFindOrderRelativeInfo;
+
+                IDbDataParameter parameter = providerFactory.CreateParameter();
+                parameter.ParameterName = "@OrderID";
+                parameter.DbType = DbType.Int32;
+                parameter.Value = orderId;
+                command.Parameters.Add(parameter);
+
+                IDataReader reader = command.ExecuteReader();
+                int AffectedRows = reader.RecordsAffected;
+
+                while (reader.Read())
+                {
+                    yield return CreateOrderRelativeInfoDto((IDataRecord)reader);
+                }
+            }
+        }
+
+        private static OrderRelativeInfoDto CreateOrderRelativeInfoDto(IDataRecord dataRecord)
+        {
+            OrderRelativeInfoDto orderRelativeInfoDto = new OrderRelativeInfoDto();
+
+            orderRelativeInfoDto.OrderID = dataRecord.GetInt32("OrderID");
+            orderRelativeInfoDto.ProductName = dataRecord.GetString("ProductName");
+            orderRelativeInfoDto.Quantity = dataRecord.GetInt16("Quantity");
+            orderRelativeInfoDto.CategoryID = dataRecord.GetInt32OrNull("CategoryID");
+            orderRelativeInfoDto.CategoryName = dataRecord.GetString("CategoryName");
+            orderRelativeInfoDto.Discount = dataRecord.GetFloat("Discount");
+
+            return orderRelativeInfoDto;
+        }
+        #endregion
     }
 }

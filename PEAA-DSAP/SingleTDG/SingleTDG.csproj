@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DTO\CategoryDto.cs" />
     <Compile Include="DTO\OrderDetailDto.cs" />
+    <Compile Include="DTO\OrderRelativeInfoDto.cs" />
     <Compile Include="DTO\ProductDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TDG\NorthwindTDG.cs" />
@@ -51,6 +52,9 @@
       <Project>{caa4a211-ca7d-4e92-a74a-2cd32259a539}</Project>
       <Name>DbUtil</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TDG\SQL\FindOrderRelativeInfoByOrderId.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
