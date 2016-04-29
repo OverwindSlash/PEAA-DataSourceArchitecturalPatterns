@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{8dd3dfc6-d02f-494a-94fe-ae6779b86601}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SingleTDG\SingleTDG.csproj">
       <Project>{c86330c0-9520-4529-ada9-6d6ff00345c1}</Project>
       <Name>SingleTDG</Name>

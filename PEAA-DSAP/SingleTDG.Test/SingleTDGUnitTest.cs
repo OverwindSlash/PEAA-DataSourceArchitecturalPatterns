@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SingleTDG.DTO;
-using SingleTDG.TDG;
 
 namespace SingleTDG.Test
 {

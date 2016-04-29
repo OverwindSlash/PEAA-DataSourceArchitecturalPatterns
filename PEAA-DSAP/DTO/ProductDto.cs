@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SingleTDG.DTO
+namespace DTO
 {
     public class ProductDto
     {

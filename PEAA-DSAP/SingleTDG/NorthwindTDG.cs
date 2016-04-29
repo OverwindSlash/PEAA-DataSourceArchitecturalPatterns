@@ -6,9 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbUtil;
-using SingleTDG.DTO;
+using DTO;
 
-namespace SingleTDG.TDG
+
+namespace SingleTDG
 {
     public static class NorthwindTDG
     {
