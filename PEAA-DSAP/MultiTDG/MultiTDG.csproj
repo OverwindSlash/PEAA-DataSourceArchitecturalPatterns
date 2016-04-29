@@ -40,11 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractTDG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DTO\" />
-    <Folder Include="TDG\" />
+    <ProjectReference Include="..\DbUtil\DbUtil.csproj">
+      <Project>{caa4a211-ca7d-4e92-a74a-2cd32259a539}</Project>
+      <Name>DbUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{8dd3dfc6-d02f-494a-94fe-ae6779b86601}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
