@@ -17,17 +17,13 @@ namespace MultiTDG
         {
             using (IDbConnection connection = providerFactory.CreateConnection())
             {
-                connection.ConnectionString = DbSettings.ConnectionString;
-                connection.Open();
+                OpenConnection(connection);
 
-                IDbCommand command = providerFactory.CreateCommand();
-                command.Connection = connection;
-                command.CommandText = GetExecuteReaderSql();
+                IDbCommand command = PrepareCommand(connection);
 
                 PrepareCommandParameters(command);
 
-                IDataReader reader = command.ExecuteReader();
-                int AffectedRows = reader.RecordsAffected;
+                IDataReader reader = ExecuteQuery(command);
 
                 while (reader.Read())
                 {
@@ -36,7 +32,29 @@ namespace MultiTDG
             }
         }
 
+        private static void OpenConnection(IDbConnection connection)
+        {
+            connection.ConnectionString = DbSettings.ConnectionString;
+            connection.Open();
+        }
+
+        private IDbCommand PrepareCommand(IDbConnection connection)
+        {
+            IDbCommand command = providerFactory.CreateCommand();
+            command.Connection = connection;
+            command.CommandText = GetExecuteReaderSql();
+            return command;
+        }
+
         protected abstract string GetExecuteReaderSql();
+
         protected abstract void PrepareCommandParameters(IDbCommand command);
+
+        private static IDataReader ExecuteQuery(IDbCommand command)
+        {
+            IDataReader reader = command.ExecuteReader();
+            int AffectedRows = reader.RecordsAffected;
+            return reader;
+        }
     }
 }

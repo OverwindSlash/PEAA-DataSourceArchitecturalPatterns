@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractTDG.cs" />
+    <Compile Include="CategoryTDG.cs" />
+    <Compile Include="OrderDetailTDG.cs" />
+    <Compile Include="OrderRelativeInfoTDG.cs" />
+    <Compile Include="ProductTDG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

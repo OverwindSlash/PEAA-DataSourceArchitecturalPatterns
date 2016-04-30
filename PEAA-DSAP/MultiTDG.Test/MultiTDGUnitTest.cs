@@ -4,17 +4,18 @@ using System.Linq;
 using DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SingleTDG.Test
+namespace MultiTDG.Test
 {
     [TestClass]
-    public class SingleTDGUnitTest
+    public class MultiTDGUnitTest
     {
         [TestMethod]
         public void TestFindOrderDetailById()
         {
             int orderId = 10693;
 
-            IList<OrderDetailDto> orderDetailDtos = NorthwindTDG.FindOrderDetailById(orderId).ToList();
+            OrderDetailTDG orderDetailTdg = new OrderDetailTDG();
+            IList<OrderDetailDto> orderDetailDtos = orderDetailTdg.FindOrderDetailById(orderId).ToList();
 
             Assert.AreEqual(4, orderDetailDtos.Count);
 
@@ -44,28 +45,30 @@ namespace SingleTDG.Test
         {
             int orderId = 10693;
 
-            IList<OrderDetailDto> orderDetailDtos = NorthwindTDG.FindOrderDetailById(orderId).ToList();
-
+            OrderDetailTDG orderDetailTdg = new OrderDetailTDG();
+            IList<OrderDetailDto> orderDetailDtos = orderDetailTdg.FindOrderDetailById(orderId).ToList();
             int productId0 = orderDetailDtos[0].ProductID;
-            ProductDto productDto0 = NorthwindTDG.FindProductById(productId0).SingleOrDefault();
+
+            ProductTDG productTdg = new ProductTDG();
+            ProductDto productDto0 = productTdg.FindProductById(productId0).SingleOrDefault();
             Assert.AreEqual(productId0, productDto0.ProductID);
             Assert.AreEqual("Mishi Kobe Niku", productDto0.ProductName);
             Assert.AreEqual(6, productDto0.CategoryID);
 
             int productId1 = orderDetailDtos[1].ProductID;
-            ProductDto productDto1 = NorthwindTDG.FindProductById(productId1).SingleOrDefault();
+            ProductDto productDto1 = productTdg.FindProductById(productId1).SingleOrDefault();
             Assert.AreEqual(productId1, productDto1.ProductID);
             Assert.AreEqual("Tourtière", productDto1.ProductName);
             Assert.AreEqual(6, productDto1.CategoryID);
 
             int productId2 = orderDetailDtos[2].ProductID;
-            ProductDto productDto2 = NorthwindTDG.FindProductById(productId2).SingleOrDefault();
+            ProductDto productDto2 = productTdg.FindProductById(productId2).SingleOrDefault();
             Assert.AreEqual(productId2, productDto2.ProductID);
             Assert.AreEqual("Gudbrandsdalsost", productDto2.ProductName);
             Assert.AreEqual(4, productDto2.CategoryID);
 
             int productId3 = orderDetailDtos[3].ProductID;
-            ProductDto productDto3 = NorthwindTDG.FindProductById(productId3).SingleOrDefault();
+            ProductDto productDto3 = productTdg.FindProductById(productId3).SingleOrDefault();
             Assert.AreEqual(productId3, productDto3.ProductID);
             Assert.AreEqual("Röd Kaviar", productDto3.ProductName);
             Assert.AreEqual(8, productDto3.CategoryID);
@@ -76,26 +79,29 @@ namespace SingleTDG.Test
         {
             int orderId = 10693;
 
-            IList<OrderDetailDto> orderDetailDtos = NorthwindTDG.FindOrderDetailById(orderId).ToList();
-
+            OrderDetailTDG orderDetailTdg = new OrderDetailTDG();
+            IList<OrderDetailDto> orderDetailDtos = orderDetailTdg.FindOrderDetailById(orderId).ToList();
             int productId0 = orderDetailDtos[0].ProductID;
-            ProductDto productDto0 = NorthwindTDG.FindProductById(productId0).SingleOrDefault();
-            CategoryDto categoryDto0 = NorthwindTDG.FindCategoryById(productDto0.CategoryID).SingleOrDefault();
+
+            ProductTDG productTdg = new ProductTDG();
+            CategoryTDG categoryTdg = new CategoryTDG();
+            ProductDto productDto0 = productTdg.FindProductById(productId0).SingleOrDefault();
+            CategoryDto categoryDto0 = categoryTdg.FindCategoryById(productDto0.CategoryID).SingleOrDefault();
             Assert.AreEqual("Meat/Poultry", categoryDto0.CategoryName);
 
             int productId1 = orderDetailDtos[1].ProductID;
-            ProductDto productDto1 = NorthwindTDG.FindProductById(productId1).SingleOrDefault();
-            CategoryDto categoryDto1 = NorthwindTDG.FindCategoryById(productDto1.CategoryID).SingleOrDefault();
+            ProductDto productDto1 = productTdg.FindProductById(productId1).SingleOrDefault();
+            CategoryDto categoryDto1 = categoryTdg.FindCategoryById(productDto1.CategoryID).SingleOrDefault();
             Assert.AreEqual("Meat/Poultry", categoryDto1.CategoryName);
 
             int productId2 = orderDetailDtos[2].ProductID;
-            ProductDto productDto2 = NorthwindTDG.FindProductById(productId2).SingleOrDefault();
-            CategoryDto categoryDto2 = NorthwindTDG.FindCategoryById(productDto2.CategoryID).SingleOrDefault();
+            ProductDto productDto2 = productTdg.FindProductById(productId2).SingleOrDefault();
+            CategoryDto categoryDto2 = categoryTdg.FindCategoryById(productDto2.CategoryID).SingleOrDefault();
             Assert.AreEqual("Dairy Products", categoryDto2.CategoryName);
 
             int productId3 = orderDetailDtos[3].ProductID;
-            ProductDto productDto3 = NorthwindTDG.FindProductById(productId3).SingleOrDefault();
-            CategoryDto categoryDto3 = NorthwindTDG.FindCategoryById(productDto3.CategoryID).SingleOrDefault();
+            ProductDto productDto3 = productTdg.FindProductById(productId3).SingleOrDefault();
+            CategoryDto categoryDto3 = categoryTdg.FindCategoryById(productDto3.CategoryID).SingleOrDefault();
             Assert.AreEqual("Seafood", categoryDto3.CategoryName);
         }
 
@@ -104,8 +110,10 @@ namespace SingleTDG.Test
         {
             int orderId = 10693;
 
+            OrderRelativeInfoTDG orderRelativeInfoTdg = new OrderRelativeInfoTDG();
+
             IList<OrderRelativeInfoDto> orderRelativeInfoDtos =
-                NorthwindTDG.FindOrderRelativeInfoByOrderId(orderId).ToList();
+                orderRelativeInfoTdg.FindOrderRelativeInfoByOrderId(orderId).ToList();
 
             Assert.AreEqual(4, orderRelativeInfoDtos.Count);
 
