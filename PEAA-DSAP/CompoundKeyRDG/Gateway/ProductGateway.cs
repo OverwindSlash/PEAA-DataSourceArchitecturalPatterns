@@ -4,10 +4,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CompoundKeyRDG.CompoundKey;
 using DbUtil;
-using SimpleKeyRDG.IdentityMap;
+using CompoundKeyRDG.IdentityMap;
 
-namespace SimpleKeyRDG.Gateway
+namespace CompoundKeyRDG.Gateway
 {
     public class ProductGateway : AbstractGateway
     {
@@ -28,7 +29,9 @@ namespace SimpleKeyRDG.Gateway
         {
             int productId = reader.GetInt32("ProductID");
 
-            ProductGateway productGateway = IdentityMap<int, ProductGateway>.Instance.GetEntry(productId);
+            Key productKey = new Key(productId);
+
+            ProductGateway productGateway = IdentityMap<Key, ProductGateway>.Instance.GetEntry(productKey);
             if (productGateway != null)
             {
                 return productGateway;
@@ -47,7 +50,7 @@ namespace SimpleKeyRDG.Gateway
             productGateway.ReorderLevel = reader.GetInt16OrNull("ReorderLevel");
             productGateway.Discontinued = reader.GetBoolean("Discontinued");
 
-            IdentityMap<int, ProductGateway>.Instance.PutEntry(productId, productGateway);
+            IdentityMap<Key, ProductGateway>.Instance.PutEntry(productKey, productGateway);
 
             return productGateway;
         }
