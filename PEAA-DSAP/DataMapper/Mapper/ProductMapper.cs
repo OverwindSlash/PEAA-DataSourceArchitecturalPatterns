@@ -13,6 +13,7 @@ namespace DataMapper.Mapper
 {
     public class ProductMapper : AbstractMapper
     {
+        #region Read Function
         protected override string FindSingleStatement()
         {
             return "SELECT * FROM [Products] " +
@@ -70,6 +71,16 @@ namespace DataMapper.Mapper
             Key productKey = new Key(productId);
 
             return (Product)FindSingleById(productKey);
+        }
+        #endregion
+
+        protected override string FindByCriteriaStatement()
+        {
+            string statement = 
+                "SELECT * FROM [Order Details] " +
+                "WHERE {0}";
+
+            return string.Format(statement, parameters["@WhereClause"]);
         }
     }
 }

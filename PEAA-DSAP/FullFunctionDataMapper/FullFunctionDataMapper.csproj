@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D80C5CBE-560A-4775-A6B6-A3D57BF5373D}</ProjectGuid>
+    <ProjectGuid>{1BD7E79E-0530-45B9-B73E-37543B3A679C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataMapper</RootNamespace>
-    <AssemblyName>DataMapper</AssemblyName>
+    <RootNamespace>FullFunctionDataMapper</RootNamespace>
+    <AssemblyName>FullFunctionDataMapper</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,9 +47,8 @@
     <Compile Include="Domain\Product.cs" />
     <Compile Include="IdentityMap\IdentityMap.cs" />
     <Compile Include="Mapper\AbstractMapper.cs" />
-    <Compile Include="Mapper\ProductMapper.cs" />
-    <Compile Include="Mapper\StatementSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statement\StatementSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DbUtil\DbUtil.csproj">

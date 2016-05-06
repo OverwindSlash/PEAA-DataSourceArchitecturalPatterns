@@ -71,5 +71,31 @@ namespace DataMapper.Mapper
         }
 
         protected abstract DomainObject MapRecordToDomainObject(IDataRecord record);
+
+
+        protected IEnumerable<DomainObject> FindMultiByCriteria()
+        {
+            // You can not search identity map only with where clause.
+            // Identity map check will occur in load section.
+
+            // Directly do database query and create corresponded gateway.
+            using (IDbConnection connection = providerFactory.CreateConnection())
+            {
+                OpenConnection(connection);
+
+                IDbCommand command = PrepareCommand(connection, FindByCriteriaStatement());
+
+                PrepareCommandParameters(command);
+
+                IDataReader reader = ExecuteQuery(command);
+
+                while (reader.Read())
+                {
+                    yield return MapRecordToDomainObject((IDataRecord)reader);
+                }
+            }
+        }
+
+        protected abstract string FindByCriteriaStatement();
     }
 }
