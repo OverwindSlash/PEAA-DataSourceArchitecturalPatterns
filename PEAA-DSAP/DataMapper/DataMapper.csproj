@@ -46,10 +46,15 @@
     <Compile Include="Domain\OrderDetail.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="IdentityMap\IdentityMap.cs" />
+    <Compile Include="Mapper\AbstractMapper.cs" />
+    <Compile Include="Mapper\ProductMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mapper\" />
+    <ProjectReference Include="..\DbUtil\DbUtil.csproj">
+      <Project>{caa4a211-ca7d-4e92-a74a-2cd32259a539}</Project>
+      <Name>DbUtil</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
