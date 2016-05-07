@@ -68,13 +68,25 @@ namespace CompoundKeyRDG.CompoundKey
 
             for (int i = 0; i < fields.Count; i++)
             {
-                if (this.fields[i] != otherKey.fields[i])
+                if (!this.fields[i].Equals(otherKey.fields[i]))
                 {
                     return false;
                 }
             }
 
             return true;
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 0;
+
+            foreach (object field in fields)
+            {
+                hash += field.GetHashCode();
+            }
+
+            return hash;
         }
 
         public object GetValue(int index)

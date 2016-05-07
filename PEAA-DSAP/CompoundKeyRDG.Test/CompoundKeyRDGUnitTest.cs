@@ -30,6 +30,23 @@ namespace CompoundKeyRDG.Test
         }
 
         [TestMethod]
+        public void TestIdentityMapOfProductFinder()
+        {
+            int productId = 9;
+            int anotherProductId = 54;
+
+            ProductFinder productFinder = new ProductFinder();
+            ProductGateway productGateway1 = productFinder.FindProductGatewayById(productId);
+            ProductGateway productGateway2 = productFinder.FindProductGatewayById(productId);
+
+            Assert.AreEqual(productGateway1, productGateway2);
+
+            ProductGateway productGateway3 = productFinder.FindProductGatewayById(anotherProductId);
+            Assert.AreNotEqual(productGateway1, productGateway3);
+            Assert.AreNotEqual(productGateway2, productGateway3);
+        }
+
+        [TestMethod]
         public void TestOrderDetailFinder()
         {
             int orderId = 10693;

@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMapper.Test", "DataMapp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullFunctionDataMapper", "FullFunctionDataMapper\FullFunctionDataMapper.csproj", "{1BD7E79E-0530-45B9-B73E-37543B3A679C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullFunctionDataMapper.Test", "FullFunctionDataMapper.Test\FullFunctionDataMapper.Test.csproj", "{38DB1428-6468-4595-AC37-7797D2FAAF87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,10 @@ Global
 		{1BD7E79E-0530-45B9-B73E-37543B3A679C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BD7E79E-0530-45B9-B73E-37543B3A679C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BD7E79E-0530-45B9-B73E-37543B3A679C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38DB1428-6468-4595-AC37-7797D2FAAF87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38DB1428-6468-4595-AC37-7797D2FAAF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38DB1428-6468-4595-AC37-7797D2FAAF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38DB1428-6468-4595-AC37-7797D2FAAF87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,5 +136,6 @@ Global
 		{D80C5CBE-560A-4775-A6B6-A3D57BF5373D} = {93B281DD-E910-423F-8467-0ACC7302B96B}
 		{B47D22FF-130B-45DF-A2C0-E2DE193BD6B9} = {93B281DD-E910-423F-8467-0ACC7302B96B}
 		{1BD7E79E-0530-45B9-B73E-37543B3A679C} = {93B281DD-E910-423F-8467-0ACC7302B96B}
+		{38DB1428-6468-4595-AC37-7797D2FAAF87} = {93B281DD-E910-423F-8467-0ACC7302B96B}
 	EndGlobalSection
 EndGlobal
