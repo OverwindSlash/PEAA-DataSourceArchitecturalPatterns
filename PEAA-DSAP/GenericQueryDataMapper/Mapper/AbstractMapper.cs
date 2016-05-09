@@ -6,16 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbUtil;
-using FullFunctionDataMapper.CompoundKey;
-using FullFunctionDataMapper.Domain;
-using FullFunctionDataMapper.Statement;
-using FullFunctionDataMapper.UoW;
+using GenericQueryDataMapper.CompoundKey;
+using GenericQueryDataMapper.Domain;
+using GenericQueryDataMapper.Statement;
 
-namespace FullFunctionDataMapper.Mapper
+namespace GenericQueryDataMapper.Mapper
 {
     public abstract class AbstractMapper
     {
         protected static readonly DbProviderFactory providerFactory = DbSettings.ProviderFactory;
+
+        //protected IDictionary<string, StatementSource> parameters = new Dictionary<string, StatementSource>();
 
         protected DomainObject FindSingleById(Key uniqueKey, StatementSource statementSource)
         {
@@ -107,34 +108,6 @@ namespace FullFunctionDataMapper.Mapper
         {
             IDataReader reader = command.ExecuteReader();
             return reader;
-        }
-
-
-        protected void ExecuteNonQuery(StatementSource statementSource)
-        {
-            using (IDbConnection connection = providerFactory.CreateConnection())
-            {
-                OpenConnection(connection);
-
-                IDbCommand command = PrepareCommand(connection, statementSource);
-
-                PrepareCommandParameters(command, statementSource);
-
-                ExecuteNonQueryCommand(command);
-            }
-        }
-
-        private int ExecuteNonQueryCommand(IDbCommand command)
-        {
-            int affectedRows = command.ExecuteNonQuery();
-            return affectedRows;
-        }
-
-        public abstract void Insert(DomainObject domainObject);
-
-        public void SaveChanges()
-        {
-            UnitOfWork.Instance.CommitChanges();
         }
     }
 }

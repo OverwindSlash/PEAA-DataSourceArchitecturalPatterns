@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FullFunctionDataMapper.IdentityMap
+namespace GenericQueryDataMapper.IdentityMap
 {
     public sealed class IdentityMap<TKey, TValue>
     {
         private static readonly IdentityMap<TKey, TValue> instance = new IdentityMap<TKey, TValue>();
         private Dictionary<TKey, TValue> loadMap = null;
 
-        static IdentityMap() { }
+        static IdentityMap()
+        {
+
+        }
 
         private IdentityMap()
         {

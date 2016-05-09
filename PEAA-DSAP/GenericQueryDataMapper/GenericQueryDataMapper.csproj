@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1BD7E79E-0530-45B9-B73E-37543B3A679C}</ProjectGuid>
+    <ProjectGuid>{157B4469-62FC-47C4-934F-4C899641365C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FullFunctionDataMapper</RootNamespace>
-    <AssemblyName>FullFunctionDataMapper</AssemblyName>
+    <RootNamespace>GenericQueryDataMapper</RootNamespace>
+    <AssemblyName>GenericQueryDataMapper</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,12 +46,10 @@
     <Compile Include="Domain\OrderDetail.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="IdentityMap\IdentityMap.cs" />
-    <Compile Include="Mapper\AbstractMapper.cs" />
-    <Compile Include="Mapper\MapperRegistry.cs" />
-    <Compile Include="Mapper\ProductMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Mapper\AbstractMapper.cs" />
+    <Compile Include="Mapper\ProductMapper.cs" />
     <Compile Include="Statement\StatementSource.cs" />
-    <Compile Include="UoW\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DbUtil\DbUtil.csproj">
@@ -59,7 +57,6 @@
       <Name>DbUtil</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

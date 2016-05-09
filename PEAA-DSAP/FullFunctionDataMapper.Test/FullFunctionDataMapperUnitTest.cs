@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FullFunctionDataMapper.CompoundKey;
 using FullFunctionDataMapper.Domain;
 using FullFunctionDataMapper.Mapper;
@@ -10,46 +11,17 @@ namespace FullFunctionDataMapper.Test
     public class FullFunctionDataMapperUnitTest
     {
         [TestMethod]
-        public void TestProductFinder()
+        public void TestInsertProductWithUoW()
         {
-            int productId = 9;
+            Product product = new Product();
+            product.ProductName = "Test Product";
+            product.Discontinued = false;
 
-            ProductMapper productMapper = new ProductMapper();
-            Product product = productMapper.FindProductById(productId);
+            MapperRegistry.Instance.Add(typeof (Product), ProductMapper.Instance);
 
-            Assert.AreEqual(productId, product.ProductID);
-            Assert.AreEqual("Mishi Kobe Niku", product.ProductName);
-            Assert.AreEqual(4, product.SupplierID);
-            Assert.AreEqual(6, product.CategoryID);
-            Assert.AreEqual("18 - 500 g pkgs.", product.QuantityPerUnit);
-            Assert.AreEqual(97.0000m, product.UnitPrice);
-            Assert.AreEqual((short)29, product.UnitsInStock);
-            Assert.AreEqual((short)0, product.UnitsOnOrder);
-            Assert.AreEqual((short)0, product.ReorderLevel);
-            Assert.AreEqual(true, product.Discontinued);
-        }
-
-        [TestMethod]
-        public void TestIdentityMapOfProductFinder()
-        {
-            int productId = 9;
-            int anotherProductId = 54;
-
-            Key key1 = new Key(productId);
-            Key key2 = new Key(productId);
-
-            Assert.AreEqual(key1, key2);
-
-            ProductMapper productMapper = new ProductMapper();
-
-            Product product1 = productMapper.FindProductById(productId);
-            Product product2 = productMapper.FindProductById(productId);
-
-            Assert.AreEqual(product1, product2);
-
-            Product product3 = productMapper.FindProductById(anotherProductId);
-            Assert.AreNotEqual(product1, product3);
-            Assert.AreNotEqual(product2, product3);
+            ProductMapper mapper = (ProductMapper)MapperRegistry.Instance.Get(typeof (Product));
+            mapper.Attach(product);
+            mapper.SaveChanges();
         }
     }
 }

@@ -52,6 +52,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullFunctionDataMapper", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullFunctionDataMapper.Test", "FullFunctionDataMapper.Test\FullFunctionDataMapper.Test.csproj", "{38DB1428-6468-4595-AC37-7797D2FAAF87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericQueryDataMapper", "GenericQueryDataMapper\GenericQueryDataMapper.csproj", "{157B4469-62FC-47C4-934F-4C899641365C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericQueryDataMapper.Test", "GenericQueryDataMapper.Test\GenericQueryDataMapper.Test.csproj", "{FEC2B5F0-5784-4A66-814C-077FCEA6C33D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +118,14 @@ Global
 		{38DB1428-6468-4595-AC37-7797D2FAAF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38DB1428-6468-4595-AC37-7797D2FAAF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38DB1428-6468-4595-AC37-7797D2FAAF87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157B4469-62FC-47C4-934F-4C899641365C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157B4469-62FC-47C4-934F-4C899641365C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157B4469-62FC-47C4-934F-4C899641365C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157B4469-62FC-47C4-934F-4C899641365C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC2B5F0-5784-4A66-814C-077FCEA6C33D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC2B5F0-5784-4A66-814C-077FCEA6C33D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC2B5F0-5784-4A66-814C-077FCEA6C33D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC2B5F0-5784-4A66-814C-077FCEA6C33D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,5 +149,7 @@ Global
 		{B47D22FF-130B-45DF-A2C0-E2DE193BD6B9} = {93B281DD-E910-423F-8467-0ACC7302B96B}
 		{1BD7E79E-0530-45B9-B73E-37543B3A679C} = {93B281DD-E910-423F-8467-0ACC7302B96B}
 		{38DB1428-6468-4595-AC37-7797D2FAAF87} = {93B281DD-E910-423F-8467-0ACC7302B96B}
+		{157B4469-62FC-47C4-934F-4C899641365C} = {93B281DD-E910-423F-8467-0ACC7302B96B}
+		{FEC2B5F0-5784-4A66-814C-077FCEA6C33D} = {93B281DD-E910-423F-8467-0ACC7302B96B}
 	EndGlobalSection
 EndGlobal
