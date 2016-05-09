@@ -74,16 +74,23 @@ namespace FullFunctionDataMapper.UoW
             InsertNew();
             UpdateDirty();
             DeleteRemoved();
+            CleanUnitOfWork();
         }
 
         private void DeleteRemoved()
         {
-            //throw new NotImplementedException();
+            foreach (DomainObject domainObject in removeObjects)
+            {
+                MapperRegistry.Instance.Get(domainObject.GetType()).Delete(domainObject);
+            }
         }
 
         private void UpdateDirty()
         {
-            //throw new NotImplementedException();
+            foreach (DomainObject domainObject in dirtyObjects)
+            {
+                MapperRegistry.Instance.Get(domainObject.GetType()).Update(domainObject);
+            }
         }
 
         private void InsertNew()
@@ -92,6 +99,13 @@ namespace FullFunctionDataMapper.UoW
             {
                 MapperRegistry.Instance.Get(domainObject.GetType()).Insert(domainObject);
             }
+        }
+
+        private void CleanUnitOfWork()
+        {
+            this.newObjects.Clear();
+            this.dirtyObjects.Clear();
+            this.removeObjects.Clear();
         }
     }
 }

@@ -61,11 +61,12 @@ namespace FullFunctionDataMapper.Mapper
         {
             foreach (IDbDataParameter dbDataParameter in statementSource.Parameters)
             {
-                DbParameter parameter = providerFactory.CreateParameter();
-                parameter.ParameterName = dbDataParameter.ParameterName;
-                parameter.DbType = dbDataParameter.DbType;
-                parameter.Value = dbDataParameter.Value;
-                command.Parameters.Add(parameter);
+                //DbParameter parameter = providerFactory.CreateParameter();
+                //parameter.ParameterName = dbDataParameter.ParameterName;
+                //parameter.DbType = dbDataParameter.DbType;
+                //parameter.Value = dbDataParameter.Value;
+                //parameter.Direction = dbDataParameter.Direction;
+                command.Parameters.Add(dbDataParameter);
             }
         }
 
@@ -131,6 +132,8 @@ namespace FullFunctionDataMapper.Mapper
         }
 
         public abstract void Insert(DomainObject domainObject);
+        public abstract void Delete(DomainObject domainObject);
+        public abstract void Update(DomainObject domainObject);
 
         public void SaveChanges()
         {
